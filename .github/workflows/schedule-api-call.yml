@@ -1,0 +1,16 @@
+name: Schedule API Call
+
+on:
+  schedule:
+    # This means every 2 minutes
+    - cron: '*/2 * * * *' 
+
+jobs:
+  call_api:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Make POST request to API
+        run: |
+          curl -X POST https://koinx-flame.vercel.app/api/crypto \
+          -H "Content-Type: application/json"
