@@ -34,8 +34,9 @@ console.log("hello")
 }
 
 
-function calculateStandardDeviation(values) {
-  const mean = values.reduce((a, b) => a + b, 0) / values.length;
-  const variance = values.reduce((a, b) => a + (b - mean) ** 2, 0) / values.length;
-  return Math.sqrt(variance).toFixed(2); 
-}
+function calculateStandardDeviation(values, isSample = false) {
+    const mean = values.reduce((a, b) => a + b, 0) / values.length;
+    const variance = values.reduce((a, b) => a + (b - mean) ** 2, 0) / (isSample ? values.length - 1 : values.length);
+    return Math.sqrt(variance).toFixed(2);
+  }
+  
